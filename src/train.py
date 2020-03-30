@@ -19,7 +19,7 @@ def run():
 
     data, _ = model_selection.train_test_split(
         data,
-        test_size=0.5,
+        test_size=0.2,
         random_state=42,
         stratify=data.polarity.values
     )
