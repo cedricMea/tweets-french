@@ -57,7 +57,7 @@ def run():
 
     # Scheduler to performs adaptatite LR regarding epochs number
     # Scheduler_with_warm_up consiste a augmenter le LR dans les premiers 
-    # warm_up steps afin de converger plus vite dans les débuts
+    # warm_up steps afin de converger plus vite dans les debuts
     scheduler = get_linear_schedule_with_warmup(
         optimizer=optimizer,
         num_training_steps=num_training_steps,
