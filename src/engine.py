@@ -55,8 +55,7 @@ def eval_fn(data_loader, model):
     # torch.nograd will descativate gradient saving 
     # and then accelerate computing
     with torch.no_grad():
-        for batch_index, batch_dataset in tqdm(enumerate(data_loader),
-                                            len(data_loader)):
+        for batch_index, batch_dataset in tqdm(enumerate(data_loader), total=len(data_loader)):
             # Get diffents input from batch dataset
             batch_ids = batch_dataset["ids"]
             batch_attention_masks = batch_dataset["attention_masks"]
@@ -78,9 +77,7 @@ def eval_fn(data_loader, model):
             )
 
             all_targets.extend(batch_targets)  # Save all targets
-            all_outputs.extend(
-                torch.nn.Sigmoid(batch_outputs).cpu().detach().numpy.tolist()
-            ) # Apply sigmoids and save predictions
+            all_outputs.extend(torch.nn.Sigmoid(batch_outputs).cpu().detach().numpy.tolist()) # Apply sigmoids and save predictions
 
 
     return all_outputs, all_targets
