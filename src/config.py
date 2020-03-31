@@ -10,9 +10,13 @@ os.environ["CURL_CA_BUNDLE"] = ""
 # disable warnings
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
+BASE_PATH = os.path.join(os.path.dirname(os.path.realpath(__file__)), "..")
 
-DATA_PATH = "../input/tweets.csv"
-MODEL_PATH = "../output/camembert"  # MODEL SAVE PATH
+
+
+BASE_PATH = os.path.join(os.path.dirname(os.path.realpath(__file__)), "..")
+DATA_PATH = os.path.join(BASE_PATH, "input/tweets.csv")
+MODEL_PATH = os.path.join(BASE_PATH, "output/camembert")  # MODEL SAVE PATH
 
 
 # Set Pytorch device 

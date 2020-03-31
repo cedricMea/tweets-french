@@ -1,23 +1,25 @@
-from transformers import CamembertModel
-from transformers import AdamW
+from transformers import pipeline
+import urllib3
+import os 
 
 if __name__=="__main__":
-    model = CamembertModel.from_pretrained("camembert-base")
+    # Avoid Milliman SSL  
+    os.environ["CURL_CA_BUNDLE"] = ""
+    # disable warnings
+    urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
-    param_optimizer = list(model.named_parameters())
-    no_decay = ["biais", "LayerNorm.biais", "LayerNorm.weight"]
+    nlp_qa = pipeline("question-answering", model='distilbert-base-cased-distilled-squad', tokenizer='bert-base-cased') 
+    cont_string = "The mortality is reported to be around 3.4% and r0 rate is 2% "
+    ques_string = "What is r0 rate value ?"
+    ques_string_1 = "What is r 0 ?"
+    ques_string_2 = "What is r0 ?"
 
-    optimizer_parameters = [
-        {'params': [tensor for name, tensor in param_optimizer if name in no_decay], 'weight_decay': 0},
-        {'params': [tensor for name, tensor in param_optimizer if name not in no_decay], 'weight_decay':0.01}
-    ] 
 
-    optimizer_parameters_him = [
-        {'params': [p for n, p in param_optimizer if not any(nd in n for nd in no_decay)], 'weight_decay': 0.001},
-        {'params': [p for n, p in param_optimizer if any(nd in n for nd in no_decay)], 'weight_decay': 0.0},
-    ]
+    res = nlp_qa(context=cont_string, question=ques_string)
 
-    # This is the overall number of trainings that will be performed
-    num_training_steps = 50
-    optimizer = AdamW(optimizer_parameters, lr=3*10-5)  # Arbitrary set
+    print(res)
+    print("#"*60)
+    print(nlp_qa(context=cont_string, question=ques_string_1))
+    print("#"*60)
+    print(nlp_qa(context=cont_string, question=ques_string_2))
 
