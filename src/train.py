@@ -11,7 +11,7 @@ def run():
     
     # Load data and little exploration
     data = utils.load_data(config.DATA_PATH)
-    utils.data_exploration(data)  # Data exploration
+    utils.data_exploration(data)  # Data exploration just print
     
     # print(data.head())
     # print(data.polarity.values)
