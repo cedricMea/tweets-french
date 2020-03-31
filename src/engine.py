@@ -76,7 +76,7 @@ def eval_fn(data_loader, model):
                 sentence_id=batch_inputs_tokens_ids
             )
 
-            all_targets.extend(batch_targets)  # Save all targets
+            all_targets.extend(batch_targets.cpu().detach().numpy().tolist())  # Save all targets
             all_outputs.extend(torch.sigmoid(batch_outputs).cpu().detach().numpy().tolist()) # Apply sigmoids and save predictions
 
 

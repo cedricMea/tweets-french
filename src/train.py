@@ -73,7 +73,7 @@ def run():
     for epoch in range(config.EPOCHS):
         engine.train_fn(train_data_loader, model, optimizer, scheduler)
         outputs, targets = engine.eval_fn(valid_data_loader, model)
-        outputs = np.where(np.array(outputs)>0.5, 1, 0)
+        outputs = np.where(np.array(outputs) > 0.5, 1, 0)
         accuracy = metrics.accuracy_score(np.array(targets), outputs)
         print(f"Accuracy, Epoch {epoch} : {accuracy}")
         if accuracy > best_accuracy:
