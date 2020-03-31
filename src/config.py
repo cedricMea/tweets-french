@@ -24,8 +24,8 @@ DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 
 EPOCHS = 10
-MAX_LEN = 256
-TRAIN_BATCH_SIZE = 16
+MAX_LEN = 128
+TRAIN_BATCH_SIZE = 32
 VALID_BATCH_SIZE = 4 
 WEIGHT_DECAY = 0.01
 TOKENIZER = CamembertTokenizer.from_pretrained(

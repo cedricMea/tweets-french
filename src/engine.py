@@ -77,7 +77,7 @@ def eval_fn(data_loader, model):
             )
 
             all_targets.extend(batch_targets)  # Save all targets
-            all_outputs.extend(torch.nn.Sigmoid(batch_outputs).cpu().detach().numpy.tolist()) # Apply sigmoids and save predictions
+            all_outputs.extend(torch.sigmoid(batch_outputs).cpu().detach().numpy().tolist()) # Apply sigmoids and save predictions
 
 
     return all_outputs, all_targets
