@@ -28,7 +28,7 @@ colorama==0.4.1
 configparser==4.0.2
 confuse==1.0.0
 crcmod==1.7
-cryptography==2.7
+cryptography==3.2
 cycler==0.10.0
 cymem==2.0.3
 dash==1.4.1
