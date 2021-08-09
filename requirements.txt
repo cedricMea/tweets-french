@@ -186,7 +186,7 @@ python-dateutil==2.8.0
 python-editor==1.0.4
 pytz==2019.2
 pyu2f==0.1.4
-pywin32==223
+pywin32==301
 pywinpty==0.5.5
 PyYAML==5.1.2
 pyzmq==18.1.0
