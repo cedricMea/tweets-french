@@ -115,7 +115,7 @@ mizani==0.5.4
 mkl-fft==1.0.14
 mkl-random==1.1.0
 mkl-service==2.3.0
-mlflow==1.7.1
+mlflow==1.23.1
 mlxtend==0.17.0
 mock==2.0.0
 monotonic==1.5
